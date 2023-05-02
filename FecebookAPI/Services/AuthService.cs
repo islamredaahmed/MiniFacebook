@@ -37,7 +37,6 @@ namespace FecebookAPI.Services
             if (await _userManager.FindByNameAsync(model.Username) is not null 
                 || _userManager.Users.Any(x => x.PhoneNumber == model.MobileNumber))
                throw new CustomAuthorizationException(string.Format(_localizer["Username or mobile number already registered!"]));
-            //return new AuthModel { Message = "Username is already registered!" };
 
             var user = new ApplicationUser
             {
@@ -118,10 +117,6 @@ namespace FecebookAPI.Services
 
             if (user is null || !await _userManager.CheckPasswordAsync(user, model.Password))
                 throw new CustomAuthorizationException(string.Format(_localizer["Username or Password is incorrect!"]));
-            //{
-            //    authModel.Message = "Username or Password is incorrect!";
-            //    return authModel;
-            //}
 
             var jwtSecurityToken = await CreateJwtToken(user);
             var rolesList = await _userManager.GetRolesAsync(user);
@@ -186,10 +181,6 @@ namespace FecebookAPI.Services
 
             if (user == null)
             throw new CustomAuthorizationException(string.Format(_localizer["Invalid token"]));
-            //{
-            //    authModel.Message = "Invalid token";
-            //    return authModel;
-            //}
 
             var refreshToken = user.RefreshTokens.Single(t => t.Token == token);
 
