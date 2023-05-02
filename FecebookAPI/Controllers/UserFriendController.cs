@@ -19,9 +19,6 @@ namespace FecebookAPI.Controllers
         [HttpPost("addFriend")]
         public ActionResult AddFriend([FromBody] string friendUserName)
         {
-            //if (!ModelState.IsValid)
-            //    return BadRequest(ModelState);
-
             _service.AddFriend(friendUserName);
 
             return Ok(new { message = "your friend  has been added" });
