@@ -25,27 +25,6 @@ namespace FecebookAPI.Services
             _localizer = localizer;
         }
 
-        //public void AddPost(PostModel model)
-        //{
-        //    var userId = _auth.GetCurrentUser().UserId;
-        //    _logger.LogInfo($"Add New Post for userid = {userId}");
-
-        //    if (userId.Equals(Guid.Empty) || string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(model.Text))
-        //    {
-        //        throw new CustomValidationException(string.Format(_localizer["userId and text are Required"]));
-        //    }
-
-        //    var post = new Post()
-        //    {
-        //        Id = Guid.NewGuid(),
-        //        text = model.Text,
-        //        image = model.Image,
-        //        UserId = userId,
-        //    };
-        //    _context.Posts.Add(post);
-        //    _context.SaveChanges();
-        //}
-
         public Responce<PostModel> DeletePost(Guid id)
         {
             if (id.Equals(Guid.Empty) || id == new Guid())
